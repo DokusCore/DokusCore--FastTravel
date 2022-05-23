@@ -2,7 +2,7 @@
 ---------------------------------- DokusCore -----------------------------------
 --------------------------------------------------------------------------------
 SteamID, CharID = nil, nil
-Loc, AliveNPCs = 'sDenis', {}
+Loc, AliveNPCs = nil, {}
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- Set Users SteamID
@@ -43,6 +43,7 @@ CreateThread(function()
           InRange, Loc = true, v.ID
           if (Low(Loc) == 'sdenis') then SetDenisPrompts() end
           if (Low(Loc) == 'guarma') then SetGuarmaPrompts() end
+          if (Low(Loc) == 'sisika jail') then SetJailPrompts() end
           while InRange do Wait(1)
             local Name  = CreateVarString(10, 'LITERAL_STRING', 'Traveller')
             PromptSetActiveGroupThisFrame(Group, Name)
@@ -50,35 +51,15 @@ CreateThread(function()
             local C = PromptHasHoldModeCompleted(Prompt_Casino)
             local J = PromptHasHoldModeCompleted(Prompt_Jail)
             local S = PromptHasHoldModeCompleted(Prompt_Guarma_sDenis)
+            local A = PromptHasHoldModeCompleted(Prompt_Jail_sDenis)
 
             if ((G)) then TriggerEvent('DokusCore:FastTavel:Teleport:Guarma') Wait(10000) end
             if ((C)) then TriggerEvent('DokusCore:FastTavel:Teleport:Casino') Wait(10000) end
             if ((J)) then TriggerEvent('DokusCore:FastTavel:Teleport:Jail')   Wait(10000) end
             if ((S)) then TriggerEvent('DokusCore:FastTavel:Teleport:sDenis') Wait(10000) end
+            if ((A)) then TriggerEvent('DokusCore:FastTavel:Teleport:sDenis') Wait(10000) end
           end
         end
-      end
-    end
-  end
-end)
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
-CreateThread(function()
-  if (_Modules.FastTavel) then
-    while not FrameReady() do Wait(1000) end
-    while not UserInGame() do Wait(1000) end
-    for k,v in pairs(_FastTravel.Locations) do
-      for k,v in pairs(v.Data) do
-        local str = v.ID
-        Prompt = PromptRegisterBegin()
-        PromptSetControlAction(Prompt, _ActionKey)
-        str = CreateVarString(10, 'LITERAL_STRING', str)
-        PromptSetText(Prompt, str)
-        PromptSetEnabled(Prompt, true)
-        PromptSetVisible(Prompt, true)
-        PromptSetHoldMode(Prompt, true)
-        PromptSetGroup(Prompt, Group)
-        PromptRegisterEnd(Prompt)
       end
     end
   end

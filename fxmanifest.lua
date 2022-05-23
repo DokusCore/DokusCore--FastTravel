@@ -5,7 +5,7 @@ description 'DokusCore FastTavel -- Teleports you to off map locations!'
 author 'http://DokusCore.com'
 fx_version "adamant"
 games {"rdr3"}
-version '0.0.1 BETA'
+version '1.0.0 BETA'
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 server_scripts {
@@ -28,7 +28,7 @@ shared_script {
   -- 'Config.lua', -- Leave offline only for in development
   '@DokusCore/[ Core ]/[ System ]/[ Shared ]/CBSystem.lua',
   '@DokusCore/[ Configs ]/[ Core ]/Core.lua',
-  '@DokusCore/[ Configs ]/[ Modules ]/FastTavel.lua',
+  '@DokusCore/[ Configs ]/[ Modules ]/FastTravel.lua',
 }
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------

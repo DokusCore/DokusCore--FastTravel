@@ -1,10 +1,10 @@
 --------------------------------------------------------------------------------
 ---------------------------------- DokusCore -----------------------------------
 --------------------------------------------------------------------------------
-Prompt_Guarma = nil
-Prompt_Casino = nil
-Prompt_Jail   = nil
+Prompt_Guarma        = nil
+Prompt_Jail          = nil
 Prompt_Guarma_sDenis = nil
+Prompt_Jail_sDenis   = nil
 Group = GetRandomIntInRange(0, 0xffffff)
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -21,19 +21,7 @@ function SetDenisPrompts()
     PromptSetHoldMode(Prompt_Guarma, true)
     PromptSetGroup(Prompt_Guarma, Group)
     PromptRegisterEnd(Prompt_Guarma)
-
-    -- Set Prompt to Guarma
-    local str = 'Casino Boat'
-    Prompt_Casino = PromptRegisterBegin()
-    PromptSetControlAction(Prompt_Casino, _Keys['C'])
-    str = CreateVarString(10, 'LITERAL_STRING', str)
-    PromptSetText(Prompt_Casino, str)
-    PromptSetEnabled(Prompt_Casino, true)
-    PromptSetVisible(Prompt_Casino, true)
-    PromptSetHoldMode(Prompt_Casino, true)
-    PromptSetGroup(Prompt_Casino, Group)
-    PromptRegisterEnd(Prompt_Casino)
-
+    
     -- Set Prompt to the jail
     local str = 'Sisika Jail'
     Prompt_Jail = PromptRegisterBegin()
@@ -54,7 +42,7 @@ function SetGuarmaPrompts()
     -- Set Prompt to Guarma
     local str = 'Saint Denis'
     Prompt_Guarma_sDenis = PromptRegisterBegin()
-    PromptSetControlAction(Prompt_Guarma_sDenis, _Keys['E'])
+    PromptSetControlAction(Prompt_Guarma_sDenis, _ActionKey)
     str = CreateVarString(10, 'LITERAL_STRING', str)
     PromptSetText(Prompt_Guarma_sDenis, str)
     PromptSetEnabled(Prompt_Guarma_sDenis, true)
@@ -64,7 +52,25 @@ function SetGuarmaPrompts()
     PromptRegisterEnd(Prompt_Guarma_sDenis)
   end)
 end
-
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+function SetJailPrompts()
+  CreateThread(function()
+    -- Set Prompt to Jail
+    local str = 'Saint Denis'
+    Prompt_Jail_sDenis = PromptRegisterBegin()
+    PromptSetControlAction(Prompt_Jail_sDenis, _ActionKey)
+    str = CreateVarString(10, 'LITERAL_STRING', str)
+    PromptSetText(Prompt_Jail_sDenis, str)
+    PromptSetEnabled(Prompt_Jail_sDenis, true)
+    PromptSetVisible(Prompt_Jail_sDenis, true)
+    PromptSetHoldMode(Prompt_Jail_sDenis, true)
+    PromptSetGroup(Prompt_Jail_sDenis, Group)
+    PromptRegisterEnd(Prompt_Jail_sDenis)
+  end)
+end
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 
 

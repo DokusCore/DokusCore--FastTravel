@@ -15,9 +15,11 @@ RegisterNetEvent('DokusCore:FastTavel:Teleport:Guarma', function()
     if (v.ID == Loc) then
       for k,v in pairs(v.Data) do
         if (Low(v.ID) == 'guarma') then
+          SetFreeze(PedID, true)
           Notify("Have a pleasant trip, and thanks for traveling Dokus Industries") Wait(5000)
+          SetFreeze(PedID, false)
           TaskGoToCoordAnyMeans(PedID, 2789.3, -1497.6, 42.7, 1.0, 0, 0, 786603, 0xbf800000)
-          Wait(5000)
+          Wait(18000)
           UIFadeOut(2000) Wait(2000)
           SetCoords(PedID, v.Coords)
           SetHeading(PedID, v.Heading)
@@ -33,15 +35,28 @@ RegisterNetEvent('DokusCore:FastTavel:Teleport:Guarma', function()
 end)
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-RegisterNetEvent('DokusCore:FastTavel:Teleport:Casino', function()
-  local PedID = PedID()
-  print("Teleporting to Casino")
-end)
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
 RegisterNetEvent('DokusCore:FastTavel:Teleport:Jail', function()
   local PedID = PedID()
-  print("Teleporting to Jail")
+  for k,v in pairs(_FastTravel.Locations) do
+    if (v.ID == Loc) then
+      for k,v in pairs(v.Data) do
+        if (Low(v.ID) == 'sisika jail') then
+          SetFreeze(PedID, true)
+          Notify("Have a pleasant trip, and thanks for traveling Dokus Industries") Wait(5000)
+          SetFreeze(PedID, false)
+          TaskGoToCoordAnyMeans(PedID, 2789.3, -1497.6, 42.7, 1.0, 0, 0, 786603, 0xbf800000)
+          Wait(18000)
+          UIFadeOut(2000) Wait(2000)
+          SetCoords(PedID, v.Coords)
+          SetHeading(PedID, v.Heading)
+          Wait(3500) UIFadeIn(5000)
+          TaskGoToCoordAnyMeans(PedID, 3299.3, -709.2, 43.3, 1.0, 0, 0, 786603, 0xbf800000)
+          Wait(3000) TriggerEvent('DokusCore:Core:ShowTopNote', 'Sisika County Jail', "Welcome")
+          ResetData()
+        end
+      end
+    end
+  end
 end)
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -51,7 +66,9 @@ RegisterNetEvent('DokusCore:FastTavel:Teleport:sDenis', function()
     if (v.ID == Loc) then
       for k,v in pairs(v.Data) do
         if (Low(v.ID) == 'sdenis') then
+          SetFreeze(PedID, true)
           Notify("Have a pleasant trip, and thanks for traveling Dokus Industries") Wait(5000)
+          SetFreeze(PedID, false)
           UIFadeOut(2000) Wait(2000)
           SetCoords(PedID, v.Coords)
           SetHeading(PedID, v.Heading)
