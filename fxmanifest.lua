@@ -5,7 +5,8 @@ description 'DokusCore FastTravel -- Teleports you to off map locations!'
 author 'http://DokusCore.com'
 fx_version "adamant"
 games {"rdr3"}
-version '1.2.1'
+-- version '1.2.1'
+version '-----' -- For Development
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 server_scripts {
